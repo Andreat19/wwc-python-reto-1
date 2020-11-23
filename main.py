@@ -12,6 +12,11 @@ def limpiar_stop_words(texto_a_limpiar):
     """
     # Escribe tu código aquí.
 
+    lower_text = texto_entrada.lower()
+    list_words = lower_text.split()
+    list_words = [ list_words[j] for j in range(len(list_words)) if list_words[j]  not in stopwords ]
+    texto_a_limpiar =  " ".join(list_words)
+
     return texto_a_limpiar
 
 
@@ -19,7 +24,6 @@ if __name__ == '__main__':
     texto_entrada = "The NEW python prograMMER is a GREAT person. He is EXCEllent solving problems OF CODING anD " \
                     "writING scrIPts tO solve moDErn problems"
     texto_procesado = limpiar_stop_words(texto_entrada)
-    texto_limpio = "the new python programmer a great person. he excellent solving problems of coding and writing " \
-                   "scripts to solve modern problems"
+    texto_limpio = "new python programmer a great person. excellent solving problems coding writing scripts solve modern problems"
     assert texto_limpio == texto_procesado, "Tu función aun no limpia de forma correcta"
     print("Tu limpiador de texto funciona!. FELICITACIONES!!!")
